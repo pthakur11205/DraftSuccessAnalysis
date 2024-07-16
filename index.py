@@ -1,41 +1,21 @@
-import requests
-from bs4 import BeautifulSoup
 import pandas as pd
+import matplotlib.pyplot as plt
 
-# URL of the page to scrape
-url = 'https://www.basketball-reference.com/teams/OKC/draft.html'
+# Read the CSV data into a DataFrame
+df = pd.read_csv('draft_data.csv')
 
-# Send a GET request to fetch the raw HTML content
-response = requests.get(url)
-if response.status_code != 200:
-    raise Exception(f"Failed to load page {url}")
+# Convert columns to appropriate data types if necessary
+df['PTS'] = pd.to_numeric(df['PTS'], errors='coerce')
+df['Pk'] = pd.to_numeric(df['Pk'], errors='coerce')
 
-# Parse the HTML content using BeautifulSoup
-soup = BeautifulSoup(response.content, 'html.parser')
+# Drop rows with NaN values in 'PTS' or 'Pk'
+df = df.dropna(subset=['PTS', 'Pk'])
 
-# Find the table you want to scrape
-table = soup.find('table', {'id': 'draft'})
-
-if table is None:
-    raise Exception("Could not find the draft table on the page.")
-
-# Extract the table headers
-headers = []
-for th in table.find('thead').find_all('th'):
-    headers.append(th.text.strip())
-
-# Extract the table rows
-rows = []
-for tr in table.find('tbody').find_all('tr'):
-    cells = []
-    for td in tr.find_all(['td', 'th']):
-        cells.append(td.text.strip())
-        rows.append(cells)
-
-# Create a DataFrame from the extracted data
-df = pd.DataFrame(rows, columns=headers)
-
-# Save the DataFrame to a CSV file
-df.to_csv('draft_data1.csv', index=False)
-
-print("Data has been successfully scraped and saved to draft_data.csv")
+# Plot points vs draft positions
+plt.figure(figsize=(10, 6))
+plt.scatter(df['Pk'], df['PTS'], color='blue')
+plt.xlabel('Draft Position')
+plt.ylabel('Points')
+plt.title('Points vs. Draft Position for OKC Thunder Draft Picks')
+plt.grid(True)
+plt.show()
