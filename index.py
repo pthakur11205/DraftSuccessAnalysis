@@ -30,14 +30,12 @@ for tr in table.find('tbody').find_all('tr'):
     cells = []
     for td in tr.find_all(['td', 'th']):
         cells.append(td.text.strip())
-    # Only add rows with the correct number of columns
-    if len(cells) == len(headers):
         rows.append(cells)
 
 # Create a DataFrame from the extracted data
 df = pd.DataFrame(rows, columns=headers)
 
 # Save the DataFrame to a CSV file
-df.to_csv('draft_data.csv', index=False)
+df.to_csv('draft_data1.csv', index=False)
 
 print("Data has been successfully scraped and saved to draft_data.csv")
