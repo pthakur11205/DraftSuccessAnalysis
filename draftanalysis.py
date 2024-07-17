@@ -1,10 +1,11 @@
 import pandas as pd
 
 # Define file paths by team
-okc_file_path = 'OKCdraft_data.csv'
-kings_file_path = 'Kingsdraft_data.csv'
-lakers_file_path = 'Lakersdraft_data.csv'
-cavs_file_path = 'Cavaliersdraft_data.csv'
+okc_file_path = 'TeamDraftData/OKCdraft_data.csv'
+kings_file_path = 'TeamDraftData/Kingsdraft_data.csv'
+lakers_file_path = 'TeamDraftData/Lakersdraft_data.csv'
+cavs_file_path = 'TeamDraftData/Cavaliersdraft_data.csv'
+
 
 # Read the Team's draft data
 df_okc = pd.read_csv(okc_file_path)
@@ -28,7 +29,7 @@ df_combined[numeric_cols] = df_combined[numeric_cols].apply(pd.to_numeric, error
 # Drop rows with NaN values in key metrics
 df_combined = df_combined.dropna(subset=numeric_cols)
 
-# Example analysis: Average VORP and WS by draft position across both teams
+# Average VORP, WS, and BPM by draft position across all teams
 avg_vorp_by_position = df_combined.groupby('Pk')['VORP'].mean()
 avg_ws_by_position = df_combined.groupby('Pk')['WS'].mean()
 avg_bpm_by_position = df_combined.groupby('Pk')['BPM'].mean()
@@ -54,5 +55,5 @@ successful_picks = df_combined[df_combined['Successful Pick']]
 print("Successful Draft Picks:")
 print(successful_picks[['Player', 'Team', 'Pk', 'VORP', 'WS', 'BPM']])
 
-# Optional: Save the combined DataFrame to a new CSV file
+# Save the combined DataFrame to a new CSV file
 df_combined.to_csv('combined_draft_data.csv', index=False)
