@@ -28,26 +28,22 @@ df_combined[numeric_cols] = df_combined[numeric_cols].apply(pd.to_numeric, error
 # Drop rows with NaN values in key metrics
 df_combined = df_combined.dropna(subset=numeric_cols)
 
-# Average VORP, WS, and BPM by draft position across all teams
-avg_vorp_by_position = df_combined.groupby('Pk')['VORP'].mean()
-avg_ws_by_position = df_combined.groupby('Pk')['WS'].mean()
-avg_bpm_by_position = df_combined.groupby('Pk')['BPM'].mean()
+# Calculate median and standard deviation for VORP, WS, and BPM by year
+medians_by_year = df_combined.groupby('Year').agg({'VORP': 'median', 'WS': 'median', 'BPM': 'median'})
+std_by_year = df_combined.groupby('Year').agg({'VORP': 'std', 'WS': 'std', 'BPM': 'std'})
 
-print("Average VORP by Draft Position:")
-print(avg_vorp_by_position)
-print("")
-print("Average WS by Draft Position:")
-print(avg_ws_by_position)
-print("")
-print("Average BPM by Draft Position:")
-print(avg_bpm_by_position)
+# Determine draft success relative to each draft year
+def is_successful_pick(row):
+    year = row['Year']
+    if year in medians_by_year.index:
+        vorp_median, vorp_std = medians_by_year.loc[year, 'VORP'], std_by_year.loc[year, 'VORP']
+        ws_median, ws_std = medians_by_year.loc[year, 'WS'], std_by_year.loc[year, 'WS']
+        bpm_median, bpm_std = medians_by_year.loc[year, 'BPM'], std_by_year.loc[year, 'BPM']
+        
+        return (row['VORP'] > vorp_median + 1.5 * vorp_std) and (row['WS'] > ws_median + 1.5 * ws_std) and (row['BPM'] > bpm_median + 1.5 * bpm_std)
+    return False
 
-# Determine draft success relative to combined data
-df_combined['Successful Pick'] = df_combined.apply(
-    lambda row: row['VORP'] > avg_vorp_by_position.get(row['Pk'], 0) and row['WS'] > avg_ws_by_position.get(row['Pk'], 0) and row['BPM'] >
-    avg_bpm_by_position.get(row['Pk'], 0),
-    axis=1
-)
+df_combined['Successful Pick'] = df_combined.apply(is_successful_pick, axis=1)
 
 # Print out successful draft picks
 successful_picks = df_combined[df_combined['Successful Pick']]

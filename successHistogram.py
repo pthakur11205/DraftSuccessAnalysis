@@ -14,6 +14,6 @@ success_counts['Success Rate %'] = success_counts[True] / (success_counts[True] 
 success_counts['Success Rate %'].plot(kind='bar', stacked=False)
 plt.xlabel('Teams')
 plt.ylabel('Successful Pick Percentage')
-plt.title('Successful Pick Percentage by Team')
-plt.xticks(rotation=15, ha='right')
+plt.title('Successful Pick Percentage by Teams since 1989')
+plt.xticks(rotation=45, ha='right')
 plt.show()
