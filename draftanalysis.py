@@ -1,26 +1,25 @@
 import pandas as pd
+import os
 
-# Define file paths by team
-okc_file_path = 'TeamDraftData/OKCdraft_data.csv'
-kings_file_path = 'TeamDraftData/Kingsdraft_data.csv'
-lakers_file_path = 'TeamDraftData/Lakersdraft_data.csv'
-cavs_file_path = 'TeamDraftData/Cavaliersdraft_data.csv'
+# Define the folder path
+folder_path = 'TeamDraftData'
 
+# Get all CSV files in the folder
+csv_files = [f for f in os.listdir(folder_path) if f.endswith('.csv')]
 
-# Read the Team's draft data
-df_okc = pd.read_csv(okc_file_path)
-df_kings = pd.read_csv(kings_file_path)
-df_lakers = pd.read_csv(lakers_file_path)
-df_cavs = pd.read_csv(cavs_file_path)
+# Initialize an empty list to store DataFrames
+dfs = []
 
-# Add a column to indicate the team
-df_okc['Team'] = 'OKC Thunder'
-df_kings['Team'] = 'Kings'
-df_lakers['Team'] = 'Lakers'
-df_cavs['Team'] = 'Cavaliers'
+# Read each CSV file and add a column indicating the team
+for file in csv_files:
+    team_name = file.replace('draft_data.csv', '').replace('_', ' ').strip()
+    file_path = os.path.join(folder_path, file)
+    df = pd.read_csv(file_path)
+    df['Team'] = team_name
+    dfs.append(df)
 
 # Concatenate the DataFrames
-df_combined = pd.concat([df_okc, df_kings, df_lakers, df_cavs], ignore_index=True)
+df_combined = pd.concat(dfs, ignore_index=True)
 
 # Convert columns to appropriate data types if necessary
 numeric_cols = ['VORP', 'WS', 'BPM', 'PTS', 'TRB', 'AST', 'FG%', '3P%', 'FT%']
