@@ -27,16 +27,21 @@ df_combined = df_combined.dropna(subset=numeric_cols)
 # Example analysis: Average VORP and WS by draft position across both teams
 avg_vorp_by_position = df_combined.groupby('Pk')['VORP'].mean()
 avg_ws_by_position = df_combined.groupby('Pk')['WS'].mean()
+avg_bpm_by_position = df_combined.groupby('Pk')['BPM'].mean()
 
 print("Average VORP by Draft Position:")
 print(avg_vorp_by_position)
-
+print("")
 print("Average WS by Draft Position:")
 print(avg_ws_by_position)
+print("")
+print("Average BPM by Draft Position:")
+print(avg_bpm_by_position)
 
 # Determine draft success relative to combined data
 df_combined['Draft Success'] = df_combined.apply(
-    lambda row: row['VORP'] > avg_vorp_by_position.get(row['Pk'], 0) and row['WS'] > avg_ws_by_position.get(row['Pk'], 0),
+    lambda row: row['VORP'] > avg_vorp_by_position.get(row['Pk'], 0) and row['WS'] > avg_ws_by_position.get(row['Pk'], 0) and row['BPM'] >
+    avg_bpm_by_position.get(row['Pk'], 0),
     axis=1
 )
 
