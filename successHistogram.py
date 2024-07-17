@@ -10,10 +10,10 @@ success_counts = df.groupby(['Team', 'Successful Pick']).size().unstack(fill_val
 # Calculate percentage of successful picks
 success_counts['Success Rate %'] = success_counts[True] / (success_counts[True] + success_counts[False]) * 100
 
-
 # Plot histogram
-success_counts.plot(kind='bar', stacked=False)
+success_counts['Success Rate %'].plot(kind='bar', stacked=False)
 plt.xlabel('Teams')
-plt.ylabel('Number of Successful Picks')
-plt.title('Number of Successful Picks per Team')
+plt.ylabel('Successful Pick Percentage')
+plt.title('Successful Pick Percentage by Team')
+plt.xticks(rotation=15, ha='right')
 plt.show()
