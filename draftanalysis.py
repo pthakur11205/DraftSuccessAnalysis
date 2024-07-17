@@ -39,14 +39,14 @@ print("Average BPM by Draft Position:")
 print(avg_bpm_by_position)
 
 # Determine draft success relative to combined data
-df_combined['Draft Success'] = df_combined.apply(
+df_combined['Successful Pick'] = df_combined.apply(
     lambda row: row['VORP'] > avg_vorp_by_position.get(row['Pk'], 0) and row['WS'] > avg_ws_by_position.get(row['Pk'], 0) and row['BPM'] >
     avg_bpm_by_position.get(row['Pk'], 0),
     axis=1
 )
 
 # Print out successful draft picks
-successful_picks = df_combined[df_combined['Draft Success']]
+successful_picks = df_combined[df_combined['Successful Pick']]
 print("Successful Draft Picks:")
 print(successful_picks[['Player', 'Team', 'Pk', 'VORP', 'WS']])
 

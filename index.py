@@ -2,7 +2,7 @@ import pandas as pd
 import matplotlib.pyplot as plt
 
 # Read the CSV data into a DataFrame
-df = pd.read_csv('OKCdraft_data.csv')
+df = pd.read_csv('combined_draft_data.csv')
 
 # Convert columns to appropriate data types if necessary
 df['BPM'] = pd.to_numeric(df['BPM'], errors='coerce')
@@ -17,10 +17,10 @@ plt.scatter(df['Pk'], df['BPM'], color='blue')
 
 # Annotate each point with the player's name
 for i, row in df.iterrows():
-    plt.annotate(row['Player'], (row['Pk'], row['BPM']), textcoords="offset points", xytext=(0,5), ha='center')
+    plt.annotate(row['Team'], (row['Pk'], row['BPM']), textcoords="offset points", xytext=(3,3), ha='center')
 
 plt.xlabel('Draft Position')
 plt.ylabel('BPM')
-plt.title('BPM vs. Draft Position for OKC Thunder Draft Picks')
+plt.title('BPM vs. Draft Position for Team Draft Picks')
 plt.grid(True)
 plt.show()
