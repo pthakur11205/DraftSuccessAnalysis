@@ -2,7 +2,7 @@ import pandas as pd
 import matplotlib.pyplot as plt
 
 # Read the CSV data into a DataFrame
-df = pd.read_csv('combined_draft_data.csv')
+df = pd.read_csv('combined_draft_data_with_weighted_scores.csv')
 
 # Convert columns to appropriate data types if necessary
 success_counts = df.groupby(['Team', 'Successful Pick']).size().unstack(fill_value=0)
