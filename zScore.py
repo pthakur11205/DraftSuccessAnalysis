@@ -30,23 +30,35 @@ df_combined[numeric_cols] = df_combined[numeric_cols].apply(pd.to_numeric, error
 # Drop rows with NaN values in key metrics
 df_combined = df_combined.dropna(subset=numeric_cols)
 
-# Calculate z-scores for VORP, WS, and BPM
+# Calculate z-scores within each draft year
 for stat in ['VORP', 'WS', 'BPM']:
-    df_combined[f'{stat}_Z'] = zscore(df_combined[stat])
+    df_combined[f'{stat}_Z_Year'] = df_combined.groupby('Year')[stat].transform(zscore)
 
-# Define weights for each metric (example: VORP: 0.4, WS: 0.3, BPM: 0.3)
-weights = {'VORP_Z': 0.4, 'WS_Z': 0.3, 'BPM_Z': 0.3}
+# Calculate z-scores within each draft position
+for stat in ['VORP', 'WS', 'BPM']:
+    df_combined[f'{stat}_Z_Position'] = df_combined.groupby('Pk')[stat].transform(zscore)
+
+# Define weights for each metric
+weights = {'VORP_Z_Year': 0.2, 'WS_Z_Year': 0.15, 'BPM_Z_Year': 0.15,
+           'VORP_Z_Position': 0.2, 'WS_Z_Position': 0.15, 'BPM_Z_Position': 0.15}
 
 # Calculate weighted score for each player
-df_combined['Weighted_Score'] = df_combined['VORP_Z'] * weights['VORP_Z'] + \
-                                df_combined['WS_Z'] * weights['WS_Z'] + \
-                                df_combined['BPM_Z'] * weights['BPM_Z']
+df_combined['Weighted_Score'] = (
+    df_combined['VORP_Z_Year'] * weights['VORP_Z_Year'] + 
+    df_combined['WS_Z_Year'] * weights['WS_Z_Year'] + 
+    df_combined['BPM_Z_Year'] * weights['BPM_Z_Year'] +
+    df_combined['VORP_Z_Position'] * weights['VORP_Z_Position'] + 
+    df_combined['WS_Z_Position'] * weights['WS_Z_Position'] + 
+    df_combined['BPM_Z_Position'] * weights['BPM_Z_Position']
+)
 
 # Round percentiles and weighted scores to two decimal places
-df_combined = df_combined.round({'VORP_Z': 2, 'WS_Z': 2, 'BPM_Z': 2, 'Weighted_Score': 2})
+df_combined = df_combined.round({'VORP_Z_Year': 2, 'WS_Z_Year': 2, 'BPM_Z_Year': 2, 
+                                 'VORP_Z_Position': 2, 'WS_Z_Position': 2, 'BPM_Z_Position': 2, 
+                                 'Weighted_Score': 2})
 
-# Define success threshold (example: players with a weighted score above 0.3 are successful)
-success_threshold = 0.3
+# Define success threshold 
+success_threshold = 0.5
 df_combined['Successful Pick'] = df_combined['Weighted_Score'] >= success_threshold
 
 # Print out successful draft picks
