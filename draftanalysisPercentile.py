@@ -37,7 +37,7 @@ std_by_year = df_combined.groupby('Year').agg({'VORP': 'std', 'WS': 'std', 'BPM'
 def percentile_rank(series):
     return series.rank(pct=True)
 
-stats_for_percentile = ['VORP', 'WS', 'BPM', 'PTS', 'TRB', 'AST']
+stats_for_percentile = ['VORP', 'WS', 'BPM']
 
 for stat in stats_for_percentile:
     df_combined[f'{stat}_Percentile'] = df_combined.groupby('Year')[stat].transform(percentile_rank)
