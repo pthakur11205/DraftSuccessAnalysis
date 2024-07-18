@@ -46,6 +46,11 @@ for stat in stats_for_percentile:
 for stat in stats_for_percentile:
     df_combined[f'{stat}_PositionPercentile'] = df_combined.groupby('Pk')[stat].transform(percentile_rank)
 
+# Round percentiles to two decimal places
+percentile_cols = [f'{stat}_Percentile' for stat in stats_for_percentile] + \
+                  [f'{stat}_PositionPercentile' for stat in stats_for_percentile]
+df_combined[percentile_cols] = df_combined[percentile_cols].round(2)
+
 # Define success criteria
 def is_successful_pick(row):
     # Original criteria
