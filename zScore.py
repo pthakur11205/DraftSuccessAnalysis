@@ -47,7 +47,7 @@ df_combined = df_combined.round({'VORP_Z': 2, 'WS_Z': 2, 'BPM_Z': 2, 'Weighted_S
 
 # Define success threshold (example: players with a weighted score above 0.3 are successful)
 success_threshold = 0.3
-df_combined['Successful Pick'] = df_combined['Weighted_Score'] > success_threshold
+df_combined['Successful Pick'] = df_combined['Weighted_Score'] >= success_threshold
 
 # Print out successful draft picks
 successful_picks = df_combined[df_combined['Successful Pick']]
