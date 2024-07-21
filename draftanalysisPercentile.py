@@ -61,16 +61,16 @@ def is_successful_pick(row):
         bpm_median, bpm_std = medians_by_year.loc[year, 'BPM'], std_by_year.loc[year, 'BPM']
         
         original_criteria = (
-            (row['VORP'] > vorp_median + 1.5 * vorp_std) and 
-            (row['WS'] > ws_median + 1.5 * ws_std) and 
-            (row['BPM'] > bpm_median + 1.5 * bpm_std)
+            (row['VORP'] > vorp_median + 1.25 * vorp_std) and 
+            (row['WS'] > ws_median + 1.25 * ws_std) and 
+            (row['BPM'] > bpm_median + 1.25 * bpm_std)
         )
     else:
         original_criteria = False
     
     # New percentile criteria
     percentile_criteria = all(
-        row[f'{stat}_Percentile'] > 0.8 and row[f'{stat}_PositionPercentile'] > 0.8
+        row[f'{stat}_Percentile'] > 0.7 and row[f'{stat}_PositionPercentile'] > 0.7
         for stat in ['VORP', 'WS', 'BPM']
     )
     
