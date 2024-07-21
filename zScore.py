@@ -62,4 +62,4 @@ print("Successful Draft Picks:")
 print(successful_picks[['Player', 'Team', 'Pk', 'VORP', 'WS', 'BPM', 'Weighted_Score']])
 
 # Save the combined DataFrame to a new CSV file
-df_combined.to_csv('combined_draft_data_with_weighted_scores.csv', index=False)
+df_combined.to_csv('combined_draft_data_with_zScore.csv', index=False)
