@@ -3,13 +3,8 @@ import numpy as np
 import os
 from scipy.stats import zscore
 
-# Define the folder path
 folder_path = 'TeamDraftData'
-
-# Get all CSV files in the folder
 csv_files = [f for f in os.listdir(folder_path) if f.endswith('.csv')]
-
-# Initialize an empty list to store DataFrames
 dfs = []
 
 # Read each CSV file and add a column indicating the team
