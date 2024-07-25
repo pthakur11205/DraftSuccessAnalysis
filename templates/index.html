@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Draft Analysis Dashboard</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+</head>
+<body>
+    <div class="container">
+        <h1 class="mt-5">Draft Analysis Dashboard</h1>
+        <p class="lead">This dashboard displays the success rate of draft picks by different teams since 1989.</p>
+
+        <div class="card mt-4">
+            <div class="card-body">
+                <h5 class="card-title">Methodology</h5>
+                <p class="card-text">
+                    The success of draft picks is determined based on a weighted score derived from z-scores of VORP, WS, and BPM.
+                    The weighted score threshold was set to 0.3 to classify successful picks.
+                </p>
+            </div>
+        </div>
+
+        <div class="card mt-4">
+            <div class="card-body">
+                <h5 class="card-title">Results</h5>
+                <p class="card-text">The following bar chart shows the success rate of draft picks by team:</p>
+                <img src="{{ url_for('static', filename='images/successful_pick_percentage_zScore.png') }}" alt="Successful Pick Percentage by Teams" class="img-fluid">
+            </div>
+        </div>
+
+        <div class="card mt-4">
+            <div class="card-body">
+                <h5 class="card-title">Success Rate by Team</h5>
+                <ul class="list-group">
+                    {% for team, rate in success_rate.items() %}
+                        <li class="list-group-item d-flex justify-content-between align-items-center">
+                            {{ team }}
+                            <span class="badge badge-primary badge-pill">{{ rate|round(2) }}%</span>
+                        </li>
+                    {% endfor %}
+                </ul>
+            </div>
+        </div>
+    </div>
+</body>
+</html>
