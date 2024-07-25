@@ -11,29 +11,51 @@
         <h1 class="mt-5">Draft Analysis Dashboard</h1>
         <p class="lead">This dashboard displays the success rate of draft picks by different teams since 1989.</p>
 
+        <!-- Z-Score Methodology -->
         <div class="card mt-4">
             <div class="card-body">
-                <h5 class="card-title">Methodology</h5>
+                <h5 class="card-title">Z-Score Methodology</h5>
                 <p class="card-text">
                     The success of draft picks is determined based on a weighted score derived from z-scores of VORP, WS, and BPM.
                     The weighted score threshold was set to 0.3 to classify successful picks.
                 </p>
-            </div>
-        </div>
-
-        <div class="card mt-4">
-            <div class="card-body">
-                <h5 class="card-title">Results</h5>
                 <p class="card-text">The following bar chart shows the success rate of draft picks by team:</p>
-                <img src="{{ url_for('static', filename='images/successful_pick_percentage_zScore_sorted.png') }}" alt="Successful Pick Percentage by Teams" class="img-fluid">
+                <img src="{{ url_for('static', filename='images/successful_pick_percentage_zScore_sorted.png') }}" alt="Successful Pick Percentage by Teams (Z-Score)" class="img-fluid">
             </div>
         </div>
 
         <div class="card mt-4">
             <div class="card-body">
-                <h5 class="card-title">Success Rate by Team</h5>
+                <h5 class="card-title">Success Rate by Team (Z-Score)</h5>
                 <ul class="list-group">
-                    {% for team, rate in success_rate.items() %}
+                    {% for team, rate in success_rate_zscore.items() %}
+                        <li class="list-group-item d-flex justify-content-between align-items-center">
+                            {{ team }}
+                            <span class="badge badge-primary badge-pill">{{ rate|round(2) }}%</span>
+                        </li>
+                    {% endfor %}
+                </ul>
+            </div>
+        </div>
+
+        <!-- Percentile Methodology -->
+        <div class="card mt-4">
+            <div class="card-body">
+                <h5 class="card-title">Percentile Methodology</h5>
+                <p class="card-text">
+                    The success of draft picks is determined based on their percentile ranks within each draft year and position for VORP, WS, and BPM.
+                    Players are classified as successful if they exceed the 70th percentile in both year and position for each stat.
+                </p>
+                <p class="card-text">The following bar chart shows the success rate of draft picks by team:</p>
+                <img src="{{ url_for('static', filename='images/successful_pick_percentage_percentile_sorted.png') }}" alt="Successful Pick Percentage by Teams (Percentile)" class="img-fluid">
+            </div>
+        </div>
+
+        <div class="card mt-4">
+            <div class="card-body">
+                <h5 class="card-title">Success Rate by Team (Percentile)</h5>
+                <ul class="list-group">
+                    {% for team, rate in success_rate_percentile.items() %}
                         <li class="list-group-item d-flex justify-content-between align-items-center">
                             {{ team }}
                             <span class="badge badge-primary badge-pill">{{ rate|round(2) }}%</span>
