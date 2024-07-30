@@ -20,8 +20,8 @@
                     from the NBA Draft, which allows teams to select exciting young players each year following the season. Seeing how teams can 
                     flourish by drafting well, we became curious on which teams were the 'best' at drafting. And using data, we decided to figure it out!
                     <br> </br>
-                    To determine successful draft picks, we first compiled draft data from various teams by reading multiple CSV files 
-                    and adding a team identifier to each dataset. After reading these files into respective DataFrames, we then merged these datasets into a single comprehensive DataFrame. 
+                    To determine successful draft picks, we first compiled draft data from various teams by reading multiple CSV files containing each team's draft data
+                    and adding a team identifier to each dataset. After reading these files into their respective DataFrames, we then merged these datasets into a single comprehensive DataFrame. 
                     When cleaning the data, here are some parameters that we established:
                     <ul>
                         <li>Only consider draft data since 1989, when the 2-round draft system was established. Previous draft years led to many draft picks 
@@ -29,7 +29,8 @@
                         <li>Ensure all relevant metrics being used were numeric</li>   
                         <li>Remove any rows containing missing values</li> 
                     </ul>
-                    The key metrics we considered were VORP, BPM, and WS. Using these metrics, we created two different methodologies to determine draft success as 
+                    The key metrics we considered were VORP (Value over Replacement Player), BPM (Box Plus-Minus), and WS (Win Shares). 
+                    Using these metrics, we created two different methodologies to determine draft success as 
                     displayed below. 
                 </p>
             </div>
