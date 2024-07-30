@@ -19,16 +19,16 @@
                     Hi! We're Pushpesh and Atai. As avid OKC Thunder fans, we have watched our team reach great successes through adding talent
                     from the NBA Draft, which allows teams to select exciting young players each year following the season. Seeing how teams can 
                     flourish by drafting well, we became curious on which teams were the 'best' at drafting. And using data, we decided to figure it out!
-
-                    <br> aaaa </br>
-
-
-                    Here are some parameters: 
+                    <br> </br>
                     To determine successful draft picks, we first compiled draft data from various teams by reading multiple CSV files 
-                    and adding a team identifier to each dataset. 
-
-
-                    We then merged these datasets into a single comprehensive DataFrame. We ensured all relevant metrics, 
+                    and adding a team identifier to each dataset. We then merged these datasets into a single comprehensive DataFrame. When cleaning the data,
+                    here are some parameters that we established:
+                    <ul>
+                        <li>Only consider draft data since 1989, when the 2-round draft system was established. Previous draft years led to many draft picks 
+                            having no recorded stats or metrics</li>
+                        <li>Ensure all metrics being used were numeric</li>    
+                    </ul>
+                    We ensured all relevant metrics, 
                     such as VORP, WS, and BPM, were numeric and removed any rows 
                     containing missing values in these key metrics. We then used two different methodologies as displayed below:
                 </p>
