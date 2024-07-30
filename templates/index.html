@@ -11,22 +11,28 @@
         <h1 class="mt-5">Draft Analysis Dashboard</h1>
         <p class="lead">This dashboard displays the success rate of draft picks by different teams since 1989.</p>
 
+        <!-- Introduction Textbox -->
+        <div class="card mt-4">
+            <div class="card-body">
+                <h5 class="card-title">Introduction</h5>
+                <p class="card-text">
+                    To determine successful draft picks, we first compiled draft data from various teams by reading multiple CSV files and adding a team identifier to each dataset. 
+                    We then merged these datasets into a single comprehensive DataFrame. We ensured all relevant metrics, such as VORP, WS, and BPM, were numeric and removed any rows 
+                    containing missing values in these key metrics. We then used two different methodologies as displayed below:
+                </p>
+            </div>
+        </div>
+
         <!-- Z-Score Methodology -->
         <div class="card mt-4">
             <div class="card-body">
                 <h5 class="card-title">Z-Score Methodology</h5>
                 <p class="card-text">
-                    To determine successful draft picks,
-                     we first compiled draft data from various 
-                     teams by reading multiple CSV files and adding a 
-                     team identifier to each dataset. 
-                     We then merged these datasets into a single comprehensive DataFrame. We ensured all relevant metrics, 
-                     such as VORP, WS, and BPM, were numeric and removed any rows containing missing values in these key metrics. 
-                     We calculated z-scores for these metrics within each draft year and draft position to normalize the 
-                     performance data. Weighted scores were then computed for each player based on these z-scores, 
-                     with specific weights assigned to each metric and z-score category. A threshold was set for determining success, 
-                     with players whose weighted scores exceeded 0.7 deemed successful draft picks. Finally, we identified and listed the 
-                     successful picks and saved the augmented dataset to a new CSV file.
+                    We calculated z-scores for these metrics within each draft year and draft position to normalize the 
+                    performance data. Weighted scores were then computed for each player based on these z-scores, 
+                    with specific weights assigned to each metric and z-score category. A threshold was set for determining success, 
+                    with players whose weighted scores exceeded 0.7 deemed successful draft picks. Finally, we identified and listed the 
+                    successful picks and saved the augmented dataset to a new CSV file.
                 </p>
                 <p class="card-text">The following bar chart shows the success rate of draft picks by team:</p>
                 <img src="{{ url_for('static', filename='images/successful_pick_percentage_zScore_sorted.png') }}" alt="Successful Pick Percentage by Teams (Z-Score)" class="img-fluid">
