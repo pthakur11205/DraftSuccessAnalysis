@@ -48,7 +48,7 @@
                     performance data. Weighted scores were then computed for each player based on these z-scores, 
                     with specific weights assigned to each metric and z-score category. A threshold was set for determining success, 
                     with players whose weighted scores exceeded 0.7 deemed successful draft picks. Finally, we identified and listed the 
-                    successful picks and saved the augmented dataset to a new CSV file.
+                    successful picks, dividing each team's successful picks by their total draft picks, and plotting this success percentage.
                 </p>
                 <p class="card-text">The following bar chart shows the success rate of draft picks by team using this methodology:</p>
                 <img src="{{ url_for('static', filename='images/successful_pick_percentage_zScore_sorted.png') }}" alt="Successful Pick Percentage by Teams (Z-Score)" class="img-fluid">
@@ -77,7 +77,8 @@
                     Our methodology for identifying successful picks combined two criteria: (1) players whose VORP, WS, and BPM values exceeded the median 
                     plus 1.25 times the standard deviation for their draft year, 
                     and (2) players whose percentile ranks for these metrics were above 70% both within their draft year and their draft position. 
-                    Players meeting either criterion were considered successful. 
+                    Players meeting either criterion were considered successful. We then identified and listed the 
+                    successful picks, dividing each team's successful picks by their total draft picks, and plotting this success percentage.
                 </p>
                 <p class="card-text">The following bar chart shows the success rate of draft picks by team using this methodology:</p>
                 <img src="{{ url_for('static', filename='images/successful_pick_percentage_percentile_sorted.png') }}" alt="Successful Pick Percentage by Teams (Percentile)" class="img-fluid">
