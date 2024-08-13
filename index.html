@@ -59,7 +59,7 @@
                     successful picks, dividing each team's successful picks by their total draft picks, and plotting this success percentage.
                 </p>
                 <p class="card-text">The following bar chart shows the success rate of draft picks by team using this methodology:</p>
-                <img src="{{ url_for('static', filename='images/successful_pick_percentage_zScore_sorted.png') }}" alt="Successful Pick Percentage by Teams (Z-Score)" class="img-fluid">
+                <img src="/static/images/successful_pick_percentage_zScore_sorted.png" alt="Successful Pick Percentage by Teams (Z-Score)" class="img-fluid">
             </div>
         </div>
 
@@ -67,12 +67,157 @@
             <div class="card-body">
                 <h5 class="card-title">Success Rate by Team (Z-Score)</h5>
                 <ul class="list-group">
-                    {% for team, rate in success_rate_zscore.items() %}
+                    
                         <li class="list-group-item d-flex justify-content-between align-items-center">
-                            {{ team }}
-                            <span class="badge badge-primary badge-pill">{{ rate|round(2) }}%</span>
+                            ATL
+                            <span class="badge badge-primary badge-pill">11.27%</span>
                         </li>
-                    {% endfor %}
+                    
+                        <li class="list-group-item d-flex justify-content-between align-items-center">
+                            BKN
+                            <span class="badge badge-primary badge-pill">24.0%</span>
+                        </li>
+                    
+                        <li class="list-group-item d-flex justify-content-between align-items-center">
+                            BOS
+                            <span class="badge badge-primary badge-pill">20.31%</span>
+                        </li>
+                    
+                        <li class="list-group-item d-flex justify-content-between align-items-center">
+                            CHA
+                            <span class="badge badge-primary badge-pill">16.95%</span>
+                        </li>
+                    
+                        <li class="list-group-item d-flex justify-content-between align-items-center">
+                            CHI
+                            <span class="badge badge-primary badge-pill">12.12%</span>
+                        </li>
+                    
+                        <li class="list-group-item d-flex justify-content-between align-items-center">
+                            CLE
+                            <span class="badge badge-primary badge-pill">21.15%</span>
+                        </li>
+                    
+                        <li class="list-group-item d-flex justify-content-between align-items-center">
+                            DAL
+                            <span class="badge badge-primary badge-pill">13.04%</span>
+                        </li>
+                    
+                        <li class="list-group-item d-flex justify-content-between align-items-center">
+                            DEN
+                            <span class="badge badge-primary badge-pill">20.75%</span>
+                        </li>
+                    
+                        <li class="list-group-item d-flex justify-content-between align-items-center">
+                            DET
+                            <span class="badge badge-primary badge-pill">18.64%</span>
+                        </li>
+                    
+                        <li class="list-group-item d-flex justify-content-between align-items-center">
+                            GSW
+                            <span class="badge badge-primary badge-pill">21.82%</span>
+                        </li>
+                    
+                        <li class="list-group-item d-flex justify-content-between align-items-center">
+                            HOU
+                            <span class="badge badge-primary badge-pill">24.0%</span>
+                        </li>
+                    
+                        <li class="list-group-item d-flex justify-content-between align-items-center">
+                            IND
+                            <span class="badge badge-primary badge-pill">16.67%</span>
+                        </li>
+                    
+                        <li class="list-group-item d-flex justify-content-between align-items-center">
+                            LAC
+                            <span class="badge badge-primary badge-pill">10.0%</span>
+                        </li>
+                    
+                        <li class="list-group-item d-flex justify-content-between align-items-center">
+                            LAL
+                            <span class="badge badge-primary badge-pill">19.61%</span>
+                        </li>
+                    
+                        <li class="list-group-item d-flex justify-content-between align-items-center">
+                            MEM
+                            <span class="badge badge-primary badge-pill">17.02%</span>
+                        </li>
+                    
+                        <li class="list-group-item d-flex justify-content-between align-items-center">
+                            MIA
+                            <span class="badge badge-primary badge-pill">28.57%</span>
+                        </li>
+                    
+                        <li class="list-group-item d-flex justify-content-between align-items-center">
+                            MIL
+                            <span class="badge badge-primary badge-pill">12.9%</span>
+                        </li>
+                    
+                        <li class="list-group-item d-flex justify-content-between align-items-center">
+                            MIN
+                            <span class="badge badge-primary badge-pill">12.9%</span>
+                        </li>
+                    
+                        <li class="list-group-item d-flex justify-content-between align-items-center">
+                            NOP
+                            <span class="badge badge-primary badge-pill">30.0%</span>
+                        </li>
+                    
+                        <li class="list-group-item d-flex justify-content-between align-items-center">
+                            NYK
+                            <span class="badge badge-primary badge-pill">15.91%</span>
+                        </li>
+                    
+                        <li class="list-group-item d-flex justify-content-between align-items-center">
+                            OKC
+                            <span class="badge badge-primary badge-pill">34.38%</span>
+                        </li>
+                    
+                        <li class="list-group-item d-flex justify-content-between align-items-center">
+                            ORL
+                            <span class="badge badge-primary badge-pill">15.0%</span>
+                        </li>
+                    
+                        <li class="list-group-item d-flex justify-content-between align-items-center">
+                            PHI
+                            <span class="badge badge-primary badge-pill">18.06%</span>
+                        </li>
+                    
+                        <li class="list-group-item d-flex justify-content-between align-items-center">
+                            PHO
+                            <span class="badge badge-primary badge-pill">16.67%</span>
+                        </li>
+                    
+                        <li class="list-group-item d-flex justify-content-between align-items-center">
+                            POR
+                            <span class="badge badge-primary badge-pill">13.56%</span>
+                        </li>
+                    
+                        <li class="list-group-item d-flex justify-content-between align-items-center">
+                            SAC
+                            <span class="badge badge-primary badge-pill">12.12%</span>
+                        </li>
+                    
+                        <li class="list-group-item d-flex justify-content-between align-items-center">
+                            SAS
+                            <span class="badge badge-primary badge-pill">22.45%</span>
+                        </li>
+                    
+                        <li class="list-group-item d-flex justify-content-between align-items-center">
+                            TOR
+                            <span class="badge badge-primary badge-pill">38.89%</span>
+                        </li>
+                    
+                        <li class="list-group-item d-flex justify-content-between align-items-center">
+                            UTH
+                            <span class="badge badge-primary badge-pill">16.95%</span>
+                        </li>
+                    
+                        <li class="list-group-item d-flex justify-content-between align-items-center">
+                            WAS
+                            <span class="badge badge-primary badge-pill">9.09%</span>
+                        </li>
+                    
                 </ul>
             </div>
         </div>
@@ -89,7 +234,7 @@
                     successful picks, dividing each team's successful picks by their total draft picks, and plotting this success percentage.
                 </p>
                 <p class="card-text">The following bar chart shows the success rate of draft picks by team using this methodology:</p>
-                <img src="{{ url_for('static', filename='images/successful_pick_percentage_percentile_sorted.png') }}" alt="Successful Pick Percentage by Teams (Percentile)" class="img-fluid">
+                <img src="/static/images/successful_pick_percentage_percentile_sorted.png" alt="Successful Pick Percentage by Teams (Percentile)" class="img-fluid">
             </div>
         </div>
 
@@ -97,12 +242,157 @@
             <div class="card-body">
                 <h5 class="card-title">Success Rate by Team (Percentile)</h5>
                 <ul class="list-group">
-                    {% for team, rate in success_rate_percentile.items() %}
+                    
                         <li class="list-group-item d-flex justify-content-between align-items-center">
-                            {{ team }}
-                            <span class="badge badge-primary badge-pill">{{ rate|round(2) }}%</span>
+                            ATL
+                            <span class="badge badge-primary badge-pill">9.86%</span>
                         </li>
-                    {% endfor %}
+                    
+                        <li class="list-group-item d-flex justify-content-between align-items-center">
+                            BKN
+                            <span class="badge badge-primary badge-pill">24.0%</span>
+                        </li>
+                    
+                        <li class="list-group-item d-flex justify-content-between align-items-center">
+                            BOS
+                            <span class="badge badge-primary badge-pill">17.19%</span>
+                        </li>
+                    
+                        <li class="list-group-item d-flex justify-content-between align-items-center">
+                            CHA
+                            <span class="badge badge-primary badge-pill">13.56%</span>
+                        </li>
+                    
+                        <li class="list-group-item d-flex justify-content-between align-items-center">
+                            CHI
+                            <span class="badge badge-primary badge-pill">13.64%</span>
+                        </li>
+                    
+                        <li class="list-group-item d-flex justify-content-between align-items-center">
+                            CLE
+                            <span class="badge badge-primary badge-pill">26.92%</span>
+                        </li>
+                    
+                        <li class="list-group-item d-flex justify-content-between align-items-center">
+                            DAL
+                            <span class="badge badge-primary badge-pill">8.7%</span>
+                        </li>
+                    
+                        <li class="list-group-item d-flex justify-content-between align-items-center">
+                            DEN
+                            <span class="badge badge-primary badge-pill">13.21%</span>
+                        </li>
+                    
+                        <li class="list-group-item d-flex justify-content-between align-items-center">
+                            DET
+                            <span class="badge badge-primary badge-pill">15.25%</span>
+                        </li>
+                    
+                        <li class="list-group-item d-flex justify-content-between align-items-center">
+                            GSW
+                            <span class="badge badge-primary badge-pill">20.0%</span>
+                        </li>
+                    
+                        <li class="list-group-item d-flex justify-content-between align-items-center">
+                            HOU
+                            <span class="badge badge-primary badge-pill">26.0%</span>
+                        </li>
+                    
+                        <li class="list-group-item d-flex justify-content-between align-items-center">
+                            IND
+                            <span class="badge badge-primary badge-pill">18.75%</span>
+                        </li>
+                    
+                        <li class="list-group-item d-flex justify-content-between align-items-center">
+                            LAC
+                            <span class="badge badge-primary badge-pill">8.0%</span>
+                        </li>
+                    
+                        <li class="list-group-item d-flex justify-content-between align-items-center">
+                            LAL
+                            <span class="badge badge-primary badge-pill">21.57%</span>
+                        </li>
+                    
+                        <li class="list-group-item d-flex justify-content-between align-items-center">
+                            MEM
+                            <span class="badge badge-primary badge-pill">17.02%</span>
+                        </li>
+                    
+                        <li class="list-group-item d-flex justify-content-between align-items-center">
+                            MIA
+                            <span class="badge badge-primary badge-pill">14.29%</span>
+                        </li>
+                    
+                        <li class="list-group-item d-flex justify-content-between align-items-center">
+                            MIL
+                            <span class="badge badge-primary badge-pill">14.52%</span>
+                        </li>
+                    
+                        <li class="list-group-item d-flex justify-content-between align-items-center">
+                            MIN
+                            <span class="badge badge-primary badge-pill">11.29%</span>
+                        </li>
+                    
+                        <li class="list-group-item d-flex justify-content-between align-items-center">
+                            NOP
+                            <span class="badge badge-primary badge-pill">26.67%</span>
+                        </li>
+                    
+                        <li class="list-group-item d-flex justify-content-between align-items-center">
+                            NYK
+                            <span class="badge badge-primary badge-pill">15.91%</span>
+                        </li>
+                    
+                        <li class="list-group-item d-flex justify-content-between align-items-center">
+                            OKC
+                            <span class="badge badge-primary badge-pill">37.5%</span>
+                        </li>
+                    
+                        <li class="list-group-item d-flex justify-content-between align-items-center">
+                            ORL
+                            <span class="badge badge-primary badge-pill">13.33%</span>
+                        </li>
+                    
+                        <li class="list-group-item d-flex justify-content-between align-items-center">
+                            PHI
+                            <span class="badge badge-primary badge-pill">15.28%</span>
+                        </li>
+                    
+                        <li class="list-group-item d-flex justify-content-between align-items-center">
+                            PHO
+                            <span class="badge badge-primary badge-pill">18.33%</span>
+                        </li>
+                    
+                        <li class="list-group-item d-flex justify-content-between align-items-center">
+                            POR
+                            <span class="badge badge-primary badge-pill">11.86%</span>
+                        </li>
+                    
+                        <li class="list-group-item d-flex justify-content-between align-items-center">
+                            SAC
+                            <span class="badge badge-primary badge-pill">13.64%</span>
+                        </li>
+                    
+                        <li class="list-group-item d-flex justify-content-between align-items-center">
+                            SAS
+                            <span class="badge badge-primary badge-pill">22.45%</span>
+                        </li>
+                    
+                        <li class="list-group-item d-flex justify-content-between align-items-center">
+                            TOR
+                            <span class="badge badge-primary badge-pill">27.78%</span>
+                        </li>
+                    
+                        <li class="list-group-item d-flex justify-content-between align-items-center">
+                            UTH
+                            <span class="badge badge-primary badge-pill">15.25%</span>
+                        </li>
+                    
+                        <li class="list-group-item d-flex justify-content-between align-items-center">
+                            WAS
+                            <span class="badge badge-primary badge-pill">7.27%</span>
+                        </li>
+                    
                 </ul>
             </div>
         </div>
